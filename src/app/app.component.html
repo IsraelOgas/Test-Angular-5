@@ -11,6 +11,13 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<mat-form-field class="username-full-width">
+  <input matInput type="text" placeholder="Nombre de usuario" (keyup)="onNameKeyUp($event)">
+</mat-form-field>
+<button mat-button color="primary" (click)="getData()">Obtener Datos</button>
+<button mat-button color="primary" (click)="getDataSubscriptions()">Obtener Repositorios</button>
+<button mat-button color="primary" (click)="clear()">Limpiar</button>
+
 <div *ngIf="foundS" class='md-padding' layout="row" layout-wrap>
   <mat-card class="example-card" *ngFor="let dataUserSubscription of dataUserSubscriptions">
     <mat-card-header>
@@ -20,6 +27,7 @@
       <mat-card-title>{{ dataUserSubscription.name }}</mat-card-title>
       <mat-card-subtitle>{{ dataUserSubscription.full_name }}</mat-card-subtitle>
     </mat-card-header>
+    <hr class="styleHR">
     <mat-card-content>
       <p>
         {{ dataUserSubscription.description }}
@@ -32,15 +40,6 @@
     </mat-card-actions>
   </mat-card>
 </div>
-
-
-
-<mat-form-field class="username-full-width">
-  <input matInput type="text" placeholder="Nombre de usuario" (keyup)="onNameKeyUp($event)">
-</mat-form-field>
-<button mat-button color="primary" (click)="getData()">Obtener Datos</button>
-<button mat-button color="primary" (click)="getDataSubscriptions()">Obtener Repositorios</button>
-<button mat-button color="primary" (click)="clear()">Limpiar</button>
 
 <div *ngIf="found">
   <mat-card class="example-card">
@@ -69,7 +68,6 @@
 
 
 <div *ngIf="foundS">
-  <p>Aqui los repositorios</p>
   <li *ngFor="let dataUserSubscription of dataUserSubscriptions">
     <h3>Nombre del repositorio: {{ dataUserSubscription.name}}</h3>
     <h4>Nombre completo del repositorio: {{ dataUserSubscription.full_name }}</h4>
